@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Content Security Policy: Strict baseline allowing essential CDNs and inline execution for the single-file architecture -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://images.unsplash.com https://ui-avatars.com; font-src 'self';">
+    
+    <title>Daoist Yoga & Wuji Qigong</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dao: {
+                            900: '#0f172a', // Deep slate
+                            800: '#1e293b',
+                            700: '#334155',
+                            100: '#f1f5f9', // Soft background
+                            accent: '#059669', // Emerald/Jade accent
+                            accentHover: '#047857'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Merriweather', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom utilities to ensure high contrast and smooth interactions */
+        .text-shadow-sm { text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
+        .hero-overlay { background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.6)); }
+        
+        /* Modal transitions */
+        .modal-enter { opacity: 0; transform: scale(0.95); }
+        .modal-enter-active { opacity: 1; transform: scale(1); transition: opacity 200ms, transform 200ms; }
+        .modal-leave { opacity: 1; transform: scale(1); }
+        .modal-leave-active { opacity: 0; transform: scale(0.95); transition: opacity 200ms, transform 200ms; }
+    </style>
+</head>
+<body class="bg-dao-100 text-dao-900 font-sans antialiased selection:bg-dao-accent selection:text-white flex flex-col min-h-screen">
+
+    <!-- 1. The Hero Section -->
+    <header class="relative w-full h-[80vh] min-h-[600px] flex items-center justify-start overflow-hidden">
+        <!-- High-compression, high-contrast background image (fallback applied via CSS if needed) -->
+        <img src="https://images.unsplash.com/photo-1603988363607-e1e4a66962c6?q=80&w=2070&auto=format&fit=crop" 
+             alt="Misty mountain landscape representing Daoist roots" 
+             class="absolute inset-0 w-full h-full object-cover z-0 grayscale-[20%]"
+             onerror="this.style.display='none'; this.parentElement.classList.add('bg-dao-900')">
+        <div class="absolute inset-0 hero-overlay z-10"></div>
+        
+        <div class="relative z-20 max-w-7xl mx-auto px-6 sm:px-12 w-full">
+            <span class="text-dao-accent font-semibold tracking-widest uppercase text-sm mb-4 block">Gideon Enz presents</span>
+            <!-- Explicit priority of "Daoist Yoga" text -->
+            <div class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 text-shadow-sm leading-tight">
+                Daoist Yoga
+            </div>
+            <!-- Value Proposition (H1) -->
+            <h1 class="text-xl md:text-3xl font-light text-gray-200 max-w-2xl mb-10 leading-relaxed text-shadow-sm">
+                Authentic Wuji Qigong & Daoist Yoga Practices designed for nervous system regulation, somatic healing, and longevity.
+            </h1>
+            <!-- Primary CTA -->
+            <button onclick="scrollToSection('zoom-dojo')" class="bg-dao-accent hover:bg-dao-accentHover text-white px-8 py-4 rounded-md font-medium text-lg transition-colors duration-200 shadow-lg inline-flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-dao-accent focus:ring-offset-2 focus:ring-offset-dao-900">
+                View Live Schedule
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- 2. The Lineage & Authority Block -->
+    <section id="lineage" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6 sm:px-12">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="w-full md:w-1/3 flex justify-center">
+                    <!-- Professional Portrait Placeholder -->
+                    <div class="relative w-64 h-64 rounded-full overflow-hidden shadow-2xl border-4 border-dao-100">
+                        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=800&auto=format&fit=crop" 
+                             alt="Gideon Enz Portrait" 
+                             class="w-full h-full object-cover grayscale"
+                             onerror="this.src='https://ui-avatars.com/api/?name=Gideon+Enz&background=0f172a&color=fff&size=512'">
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3 space-y-6">
+                    <h2 class="text-3xl font-serif font-bold text-dao-900">Lineage & Authority</h2>
+                    <div class="w-16 h-1 bg-dao-accent"></div>
+                    <p class="text-lg text-dao-700 leading-relaxed">
+                        <strong>Gideon Enz</strong> is the official lineage holder of Wuji Qigong, a rare and highly preserved internal martial art and meditation system. Unlike generic, modernized adaptations, this instruction transmits the unbroken, traditional methodologies required for authentic energetic cultivation and structural integrity.
+                    </p>
+                    <p class="text-lg text-dao-700 leading-relaxed">
+                        These practices are specifically structured to accommodate diverse physical capacities, emphasizing joint health, chronic pain mitigation, and the stabilization of the central nervous system.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. The "Zoom Dojo" (Stripe Integration Hub) -->
+    <section id="zoom-dojo" class="py-24 bg-dao-100">
+        <div class="max-w-7xl mx-auto px-6 sm:px-12">
+            <div class="mb-12">
+                <h2 class="text-3xl font-serif font-bold text-dao-900 mb-4">The Zoom Dojo</h2>
+                <p class="text-dao-700 text-lg">Upcoming Live Remote Broadcasts. Secure your access to live, corrective instruction.</p>
+            </div>
+            
+            <!-- CSS Grid Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Class Card 1 -->
+                <div class="bg-white rounded-xl shadow-md p-8 border border-gray-100 flex flex-col justify-between hover:shadow-lg transition-shadow">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">All Levels</span>
+                            <span class="text-dao-accent font-bold">$25</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dao-900 mb-2">Foundational Wuji Posture</h3>
+                        <div class="text-sm text-dao-700 space-y-2 mb-6">
+                            <p class="flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                Wed, April 15, 2026
+                            </p>
+                            <p class="flex items-center gap-2 text-dao-900 font-medium">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                6:00 PM CDT (UTC-5)
+                            </p>
+                            <p class="mt-4 text-xs bg-gray-50 p-2 rounded text-gray-600">
+                                <strong class="text-gray-800">Prerequisites:</strong> None. Suitable for chronic back pain and limited mobility.
+                            </p>
+                        </div>
+                    </div>
+                    <button onclick="openCheckout('Stripe', 'Foundational Wuji Posture', '$25.00')" class="w-full bg-dao-900 hover:bg-dao-800 text-white font-medium py-3 px-4 rounded transition-colors text-center">
+                        Register via Stripe
+                    </button>
+                </div>
+
+                <!-- Class Card 2 -->
+                <div class="bg-white rounded-xl shadow-md p-8 border border-gray-100 flex flex-col justify-between hover:shadow-lg transition-shadow">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-2.5 py-0.5 rounded">Intermediate</span>
+                            <span class="text-dao-accent font-bold">$35</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dao-900 mb-2">Spinal Marrow Washing</h3>
+                        <div class="text-sm text-dao-700 space-y-2 mb-6">
+                            <p class="flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                Sat, April 18, 2026
+                            </p>
+                            <p class="flex items-center gap-2 text-dao-900 font-medium">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                9:00 AM CDT (UTC-5)
+                            </p>
+                            <p class="mt-4 text-xs bg-gray-50 p-2 rounded text-gray-600">
+                                <strong class="text-gray-800">Prerequisites:</strong> Completion of Introductory Series.
+                            </p>
+                        </div>
+                    </div>
+                    <button onclick="openCheckout('Stripe', 'Spinal Marrow Washing', '$35.00')" class="w-full bg-dao-900 hover:bg-dao-800 text-white font-medium py-3 px-4 rounded transition-colors text-center">
+                        Register via Stripe
+                    </button>
+                </div>
+
+                <!-- Class Card 3 -->
+                <div class="bg-white rounded-xl shadow-md p-8 border border-gray-100 flex flex-col justify-between hover:shadow-lg transition-shadow">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded">Advanced</span>
+                            <span class="text-dao-accent font-bold">$40</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-dao-900 mb-2">Daoist Micro-Cosmic Orbit</h3>
+                        <div class="text-sm text-dao-700 space-y-2 mb-6">
+                            <p class="flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                Sun, April 19, 2026
+                            </p>
+                            <p class="flex items-center gap-2 text-dao-900 font-medium">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                8:00 AM CDT (UTC-5)
+                            </p>
+                            <p class="mt-4 text-xs bg-gray-50 p-2 rounded text-gray-600">
+                                <strong class="text-gray-800">Prerequisites:</strong> 1 Year Consistent Wuji Practice.
+                            </p>
+                        </div>
+                    </div>
+                    <button onclick="openCheckout('Stripe', 'Daoist Micro-Cosmic Orbit', '$40.00')" class="w-full bg-dao-900 hover:bg-dao-800 text-white font-medium py-3 px-4 rounded transition-colors text-center">
+                        Register via Stripe
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Certifications & Digital Library (LemonSqueezy Hub) -->
+    <section class="py-24 bg-dao-900 text-white">
+        <div class="max-w-6xl mx-auto px-6 sm:px-12">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4">Digital Library & Certifications</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">High-fidelity recordings, deep-dive seminars, and official pathways to instruction.</p>
+            </div>
+
+            <!-- Primary Focus: Teacher Certification -->
+            <div class="bg-dao-800 rounded-2xl border border-dao-700 p-8 md:p-12 mb-12 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-10">
+                    <svg class="w-32 h-32" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13h-13L12 6.5z"/></svg>
+                </div>
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="text-dao-accent font-semibold tracking-wider uppercase text-sm mb-2 block">Flagship Program</span>
+                        <h3 class="text-3xl font-bold mb-4">Wuji Qigong Teacher Certification</h3>
+                        <p class="text-gray-300 mb-6 leading-relaxed">
+                            An intensive, academic-grade curriculum designed to transfer the complete systemic knowledge of the lineage. This program is heavily vetted to ensure practitioners can safely transmit the arts to vulnerable populations, including those with profound physical or neurological disabilities.
+                        </p>
+                        <ul class="space-y-3 mb-8 text-gray-300 text-sm">
+                            <li class="flex items-center gap-2"><svg class="w-5 h-5 text-dao-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 120 Hours of Clinical & Somatic Theory</li>
+                            <li class="flex items-center gap-2"><svg class="w-5 h-5 text-dao-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Direct Evaluation by Lineage Holder Gideon Enz</li>
+                            <li class="flex items-center gap-2"><svg class="w-5 h-5 text-dao-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Lifetime Access to Core Curricular Materials</li>
+                        </ul>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button onclick="openCheckout('LemonSqueezy', 'Wuji Teacher Certification', '$2,500.00')" class="bg-dao-accent hover:bg-dao-accentHover text-white px-6 py-3 rounded font-medium text-center transition-colors">
+                                Purchase Enrollment
+                            </button>
+                            <a href="#" class="border border-gray-500 hover:border-gray-300 text-white px-6 py-3 rounded font-medium text-center transition-colors">
+                                View Full Syllabus
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Mockup/Visual side -->
+                    <div class="hidden lg:block">
+                        <div class="bg-dao-900 rounded-lg p-6 shadow-inner border border-dao-700">
+                            <div class="space-y-4">
+                                <div class="h-8 bg-dao-800 rounded w-3/4"></div>
+                                <div class="h-4 bg-dao-800 rounded w-full"></div>
+                                <div class="h-4 bg-dao-800 rounded w-5/6"></div>
+                                <div class="h-32 bg-dao-800 rounded w-full mt-4 flex items-center justify-center text-dao-700">Video Module Mockup</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secondary Digital Products -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-dao-800 border border-dao-700 rounded-xl p-6 flex justify-between items-center">
+                    <div>
+                        <h4 class="font-bold text-lg mb-1">Nervous System Reset Protocol</h4>
+                        <p class="text-sm text-gray-400">2-Hour Recorded Seminar</p>
+                    </div>
+                    <button onclick="openCheckout('LemonSqueezy', 'Nervous System Reset', '$49.00')" class="text-dao-accent hover:text-white border border-dao-accent hover:bg-dao-accent px-4 py-2 rounded text-sm font-medium transition-colors">
+                        Purchase
+                    </button>
+                </div>
+                <div class="bg-dao-800 border border-dao-700 rounded-xl p-6 flex justify-between items-center">
+                    <div>
+                        <h4 class="font-bold text-lg mb-1">Daoist Yoga for Chronic Pain</h4>
+                        <p class="text-sm text-gray-400">4-Part Video Series</p>
+                    </div>
+                    <button onclick="openCheckout('LemonSqueezy', 'Chronic Pain Series', '$89.00')" class="text-dao-accent hover:text-white border border-dao-accent hover:bg-dao-accent px-4 py-2 rounded text-sm font-medium transition-colors">
+                        Purchase
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Community Trust Signals -->
+    <section class="py-24 bg-white border-b border-gray-200">
+        <div class="max-w-4xl mx-auto px-6 sm:px-12 text-center">
+            <h2 class="text-3xl font-serif font-bold text-dao-900 mb-12">The Pathway to Practice</h2>
+            
+            <!-- 3 Steps for Beginners (High Contrast, Accessible Layout) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+                <!-- Desktop connecting line -->
+                <div class="hidden md:block absolute top-8 left-[15%] right-[15%] h-0.5 bg-gray-200 z-0"></div>
+                
+                <div class="relative z-10 flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full bg-dao-900 text-white flex items-center justify-center text-2xl font-bold mb-6 shadow-md ring-4 ring-white">1</div>
+                    <h3 class="text-xl font-bold text-dao-900 mb-3">Assess</h3>
+                    <p class="text-gray-700 text-base leading-relaxed">
+                        Register for a foundational live class. We establish an absolute baseline of your physical capacity and current physiological state.
+                    </p>
+                </div>
+                
+                <div class="relative z-10 flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full bg-dao-900 text-white flex items-center justify-center text-2xl font-bold mb-6 shadow-md ring-4 ring-white">2</div>
+                    <h3 class="text-xl font-bold text-dao-900 mb-3">Regulate</h3>
+                    <p class="text-gray-700 text-base leading-relaxed">
+                        Learn precise breathing and postural adjustments designed specifically to arrest panic cycles and de-escalate neurological distress.
+                    </p>
+                </div>
+                
+                <div class="relative z-10 flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full bg-dao-900 text-white flex items-center justify-center text-2xl font-bold mb-6 shadow-md ring-4 ring-white">3</div>
+                    <h3 class="text-xl font-bold text-dao-900 mb-3">Integrate</h3>
+                    <p class="text-gray-700 text-base leading-relaxed">
+                        Implement short, non-taxing micro-practices into your daily routine to slowly build structural integrity and resilience over time.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. The Privacy-First Footer -->
+    <footer class="bg-dao-100 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 sm:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
+            
+            <div class="text-center md:text-left">
+                <span class="text-xl font-serif font-bold text-dao-900">Daoist Yoga</span>
+                <p class="text-sm text-dao-700 mt-2">© 2026 Gideon Enz. All rights reserved.</p>
+            </div>
+            
+            <nav class="flex gap-6 text-sm font-medium text-dao-900">
+                <a href="#" class="hover:text-dao-accent transition-colors">About</a>
+                <a href="#" class="hover:text-dao-accent transition-colors">Contact</a>
+                <a href="#" class="hover:text-dao-accent transition-colors">Certification Landing</a>
+            </nav>
+            
+            <!-- Security Declaration -->
+            <div class="max-w-xs text-center md:text-right border-t md:border-t-0 md:border-l border-gray-300 pt-4 md:pt-0 md:pl-6 mt-4 md:mt-0">
+                <p class="text-xs text-gray-500 leading-relaxed font-mono bg-gray-200/50 p-2 rounded">
+                    <strong>Zero-Tracking Policy:</strong> This site utilizes no third-party tracking cookies and operates on a secure, static architecture to ensure complete user data sovereignty.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Checkout Simulation Modal System (To avoid browser alert() constraints) -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-dao-900/80 backdrop-blur-sm hidden" aria-modal="true" role="dialog">
+        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full mx-4 overflow-hidden transform scale-95 opacity-0 transition-all duration-300" id="modal-content">
+            <!-- Modal Header -->
+            <div class="bg-gray-50 border-b border-gray-200 px-6 py-4 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    <h3 class="text-sm font-semibold text-gray-700 uppercase tracking-wide" id="modal-provider">Secure Checkout</h3>
+                </div>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="p-6">
+                <p class="text-sm text-gray-500 mb-1">You are purchasing:</p>
+                <h4 class="text-xl font-bold text-dao-900 mb-4" id="modal-product">Product Name</h4>
+                <div class="flex justify-between items-center border-t border-gray-100 pt-4 mb-6">
+                    <span class="text-gray-600">Total Due</span>
+                    <span class="text-2xl font-bold text-dao-accent" id="modal-price">$0.00</span>
+                </div>
+                <p class="text-xs text-gray-500 mb-6 bg-gray-50 p-3 rounded border border-gray-100">
+                    *Simulation mode. In production, this button routes directly to the hosted <span id="modal-service-name" class="font-semibold"></span> checkout portal, executing the transaction completely off-site for maximum security.
+                </p>
+                <button onclick="closeModal()" class="w-full bg-dao-900 hover:bg-dao-800 text-white font-medium py-3 px-4 rounded transition-colors">
+                    Close Simulation
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Logic -->
+    <script>
+        // Smooth scroll fallback function
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if(element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Modal Logic to handle mock checkouts seamlessly without alerts
+        const modal = document.getElementById('checkout-modal');
+        const modalContent = document.getElementById('modal-content');
+
+        function openCheckout(provider, productName, price) {
+            // Populate data
+            document.getElementById('modal-provider').innerText = provider + " Secure Gateway";
+            document.getElementById('modal-service-name').innerText = provider;
+            document.getElementById('modal-product').innerText = productName;
+            document.getElementById('modal-price').innerText = price;
+            
+            // Show modal
+            modal.classList.remove('hidden');
+            
+            // Trigger reflow to apply transition
+            void modal.offsetWidth;
+            
+            modalContent.classList.remove('scale-95', 'opacity-0');
+            modalContent.classList.add('scale-100', 'opacity-100');
+
+            // Close on escape key
+            document.addEventListener('keydown', handleEscape);
+        }
+
+        function closeModal() {
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300); // match duration
+
+            document.removeEventListener('keydown', handleEscape);
+        }
+
+        function handleEscape(e) {
+            if (e.key === 'Escape') closeModal();
+        }
+
+        // Close on clicking outside the modal box
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
